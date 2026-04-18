@@ -96,6 +96,7 @@ def _add_medication_category(
         for c in existing
     ):
         return resource
+    # Nominative reference to publicly documented Epic FHIR profile URI; see docs/EPIC_QUIRKS.md Q34.
     new_cat = list(existing) + [
         {
             "coding": [

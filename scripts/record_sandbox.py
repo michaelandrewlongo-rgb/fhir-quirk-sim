@@ -1,21 +1,29 @@
 """
-Record Epic sandbox responses into tests/compat/fixtures/epic/<tag>/.
+Record Epic sandbox responses into private/captures/<tag>/.
 
 Usage:
     python scripts/record_sandbox.py \
-        --base-url https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4 \
+        --acknowledge-private \
+        --base-url https://<sandbox-fhir-base> \
         --token  $EPIC_BEARER \
-        --patient eq081-VQEgP8drUUqCWzHfw3 \
+        --patient <YOUR_SANDBOX_PATIENT_ID> \
         --tag epic-r4-sandbox-2026-04
 
 Captures Observation + DocumentReference search + Binary dereferences for the
-given sandbox patient. Intended to be run manually when you want fresh byte
-samples; the resulting fixture tree becomes inputs to the local simulator.
+given sandbox patient into `private/captures/<tag>/`. `private/` is gitignored;
+these bytes MUST NOT be committed and MUST NOT be copied into
+`tests/compat/fixtures/`. Use `scripts/calibrate_fixtures.py --tag <tag>` to
+produce a shape-only diff; rewrite synthetic fixtures in the public tree by
+hand.
+
+Sandbox patient IDs are documented by Epic at their developer portal; substitute
+the placeholder above with a currently published sandbox patient ID.
 """
 from __future__ import annotations
 
 import argparse
 import asyncio
+import sys
 from pathlib import Path
 
 from epic_sim.record.capture import RecordingFhirAdapter
@@ -59,19 +67,61 @@ async def record(base_url: str, token: str, patient: str, tag: str, root: Path) 
         await adapter.close()
 
 
+REPO = Path(__file__).resolve().parent.parent
+TESTS_DIR = (REPO / "tests").resolve()
+
+
+def _refuse_if_under_tests(root: Path) -> None:
+    resolved = root.resolve()
+    try:
+        resolved.relative_to(TESTS_DIR)
+    except ValueError:
+        return
+    print(
+        f"record_sandbox: refusing to write under tests/ (resolved root: {resolved}). "
+        "Sandbox captures must land in private/captures/, never in the public "
+        "fixture tree. See tests/compat/fixtures/epic/README.md.",
+        file=sys.stderr,
+    )
+    sys.exit(2)
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--base-url", required=True)
     p.add_argument("--token", required=True)
     p.add_argument("--patient", required=True, help="Epic sandbox patient ID")
-    p.add_argument("--tag", required=True, help="Fixture subdirectory tag")
+    p.add_argument("--tag", required=True, help="Capture subdirectory tag")
     p.add_argument(
         "--root",
-        default="tests/compat/fixtures/epic",
-        help="Fixture tree root (default: tests/compat/fixtures/epic)",
+        default="private/captures",
+        help="Capture tree root (default: private/captures)",
+    )
+    p.add_argument(
+        "--acknowledge-private",
+        action="store_true",
+        help=(
+            "Required. Acknowledges that captured bytes are private and must not "
+            "be committed to the public fixture tree."
+        ),
     )
     args = p.parse_args()
-    asyncio.run(record(args.base_url, args.token, args.patient, args.tag, Path(args.root)))
+
+    if not args.acknowledge_private:
+        print(
+            "record_sandbox: refusing to run without --acknowledge-private. "
+            "Sandbox captures may contain Epic-authored Materials or real data; "
+            "they must not be committed. Re-run with --acknowledge-private to "
+            "confirm you will keep the output under private/ and rewrite "
+            "synthetic fixtures by hand via scripts/calibrate_fixtures.py.",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+
+    root = Path(args.root)
+    _refuse_if_under_tests(root)
+
+    asyncio.run(record(args.base_url, args.token, args.patient, args.tag, root))
 
 
 if __name__ == "__main__":

@@ -29,3 +29,6 @@ Thumbs.db
 .coverage
 htmlcov/
 coverage.xml
+
+# Private sandbox captures (never committed)
+private/

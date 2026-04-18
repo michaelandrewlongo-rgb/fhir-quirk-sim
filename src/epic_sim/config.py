@@ -33,6 +33,9 @@ class SimulatorConfig(BaseModel):
     post_filter_enabled: bool = True
     post_filter_discard_rate: float = 0.3
     unsupported_param_behavior: Literal["reject", "ignore"] = "reject"
+    # Nominative reference to publicly documented Epic identifiers; see
+    # docs/EPIC_QUIRKS.md Q32, Q33, Q34 for sources. Override via YAML in
+    # production or any deployment that requires a different OID / extension URL.
     mrn_oid_system: str = "urn:oid:1.2.840.114350.1.13.0.1.7.5.737384.14"
     bulk_since_supported: bool = False
     include_iterate_supported: bool = False

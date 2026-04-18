@@ -1,0 +1,10 @@
+{
+  "source": "synthetic",
+  "derived_from": "Hand-authored FHIR R4 OperationOutcome representing a Binary 403 access denial.",
+  "references": [
+    "HL7 FHIR R4 OperationOutcome: https://hl7.org/fhir/R4/operationoutcome.html",
+    "HL7 issue-severity value set: https://hl7.org/fhir/R4/valueset-issue-severity.html",
+    "HL7 issue-type value set: https://hl7.org/fhir/R4/valueset-issue-type.html",
+    "docs/EPIC_QUIRKS.md Q24, Q28"
+  ]
+}

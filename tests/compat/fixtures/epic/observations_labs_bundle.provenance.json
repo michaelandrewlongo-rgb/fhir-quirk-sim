@@ -1,0 +1,11 @@
+{
+  "source": "synthetic",
+  "derived_from": "Hand-authored FHIR R4 Bundle of Observation resources shaped after Epic lab-result search responses.",
+  "references": [
+    "HL7 FHIR R4 Observation: https://hl7.org/fhir/R4/observation.html",
+    "HL7 FHIR R4 Bundle: https://hl7.org/fhir/R4/bundle.html",
+    "LOINC code system: http://loinc.org",
+    "docs/EPIC_QUIRKS.md Q15, Q32"
+  ],
+  "notes": "Epic-local OID urn:oid:1.2.840.114350.1.13.999.234 is a synthetic sentinel (.999. arc). Not a real Epic OID."
+}

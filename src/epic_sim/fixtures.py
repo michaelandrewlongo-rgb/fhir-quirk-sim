@@ -3,6 +3,12 @@ Fixture-backed FhirClient for the Epic simulator.
 
 Lifted from tests/compat/conftest.py so it can back the HTTP surface as well as
 the in-process contract tests. The test conftest re-exports from this module.
+
+All fixtures under tests/compat/fixtures/epic/ are hand-authored synthetic
+data. Per-fixture provenance lives in sibling `<name>.provenance.json` files
+rather than inside the fixture bytes, so loaders never need to strip a
+provenance key before passing bytes downstream. See
+tests/compat/fixtures/epic/PROVENANCE.md.
 """
 import base64
 import json

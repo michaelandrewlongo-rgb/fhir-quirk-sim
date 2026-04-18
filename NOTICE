@@ -1,0 +1,14 @@
+EPIC Suite
+Copyright the EPIC Suite contributors.
+
+This repository does not redistribute any Epic-authored Materials. All FHIR
+fixtures under tests/compat/fixtures/ are hand-authored synthetic resources
+derived from publicly documented FHIR R4 shapes and publicly standardized code
+systems (LOINC, SNOMED CT, HL7). See tests/compat/fixtures/epic/PROVENANCE.md
+for per-fixture provenance.
+
+"Epic" is a trademark of Epic Systems Corporation. References to Epic
+identifiers, endpoint URLs, and quirk behaviors in this repository are
+nominative and exist solely to describe integration behavior for
+interoperability purposes. This project is not affiliated with, endorsed by,
+or sponsored by Epic Systems Corporation.

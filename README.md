@@ -43,8 +43,21 @@ tests/
   record/         Fixture normalization
 configs/          default / permissive / strict_epic profiles
 docs/EPIC_QUIRKS.md   Catalog of 44 Epic integration quirks (Q1–Q44)
-scripts/record_sandbox.py   Capture sandbox responses into fixtures
+scripts/record_sandbox.py   Capture sandbox responses into private/captures/
+scripts/calibrate_fixtures.py   Structural diff of private captures vs public fixtures
+scripts/check_fixtures_synthetic.py   CI guardrail: fixtures stay redistributable
 ```
+
+## OSS provenance
+
+All fixtures under `tests/compat/fixtures/epic/` are hand-authored synthetic
+data. No Epic-authored Materials are redistributed from this repository. See
+`tests/compat/fixtures/epic/README.md` and `tests/compat/fixtures/epic/PROVENANCE.md`
+for per-fixture provenance, and the repo-root `NOTICE` for trademark posture.
+
+Sandbox captures (via `scripts/record_sandbox.py`) land in the gitignored
+`private/captures/` tree and must never be copied into the public fixture
+tree.
 
 ## Run
 

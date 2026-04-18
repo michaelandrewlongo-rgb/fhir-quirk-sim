@@ -1,0 +1,9 @@
+{
+  "source": "synthetic",
+  "derived_from": "Hand-authored SMART App Launch context stub.",
+  "references": [
+    "HL7 SMART App Launch 2.x: https://hl7.org/fhir/smart-app-launch/",
+    "docs/EPIC_QUIRKS.md Q1"
+  ],
+  "notes": "All IDs and tokens are synthetic placeholders."
+}

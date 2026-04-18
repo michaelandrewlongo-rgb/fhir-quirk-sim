@@ -23,5 +23,8 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .
 
+      - name: Verify fixtures are synthetic
+        run: python scripts/check_fixtures_synthetic.py
+
       - name: Run pytest
         run: python -m pytest -q
