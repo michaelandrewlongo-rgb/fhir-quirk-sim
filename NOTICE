@@ -1,5 +1,5 @@
-EPIC Suite
-Copyright the EPIC Suite contributors.
+FHIR Quirk Simulator
+Copyright the FHIR Quirk Simulator contributors.
 
 This repository does not redistribute any Epic-authored Materials. All FHIR
 fixtures under tests/compat/fixtures/ are hand-authored synthetic resources

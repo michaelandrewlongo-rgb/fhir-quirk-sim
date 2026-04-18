@@ -1,7 +1,12 @@
-# EPIC Suite
+# FHIR Quirk Simulator
 
-Local Epic-shaped FHIR / SMART-on-FHIR simulator plus a compat test harness for
-the Chart Synthesis FHIR proxy path.
+A local FHIR R4 / SMART-on-FHIR simulator that reproduces the integration
+quirks of Epic's FHIR API, plus a compat test harness for client code that
+needs to behave correctly against Epic-shaped responses.
+
+> **Naming.** This project is not affiliated with, endorsed by, or sponsored
+> by Epic Systems Corporation. "Epic" references throughout this repository
+> are nominative — used only to describe the integration target. See `NOTICE`.
 
 The suite has two halves:
 
