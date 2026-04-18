@@ -1,0 +1,3 @@
+# Default simulator config.
+# Matches pydantic defaults; intended as a starting template for per-env overrides.
+auth_required: false

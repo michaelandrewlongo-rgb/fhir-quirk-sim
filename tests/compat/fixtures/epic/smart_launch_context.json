@@ -1,0 +1,7 @@
+{
+  "patientId": "epic-patient-001",
+  "encounterId": "epic-encounter-001",
+  "userId": "Practitioner/epic-user-001",
+  "fhirBaseUrl": "https://fhir.epic.example.com/api/FHIR/R4",
+  "accessToken": "synthetic-token"
+}

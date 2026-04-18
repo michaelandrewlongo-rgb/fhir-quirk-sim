@@ -1,0 +1,41 @@
+# Reproduces Epic's painful behaviors. Use this config to surface integration
+# bugs early by making the simulator behave as badly as real Epic.
+auth_required: true
+
+# Auth / SMART
+backend_services_jwt_required: true
+auth_code_format: jwt
+online_access_returns_offline: true
+fhir_user_in_id_token: true
+omit_introspection_endpoint: true
+omit_revocation_endpoint: true
+omit_registration_endpoint: true
+jwt_jti_max_length: 151
+jwt_exp_max_minutes: 5
+jwt_jti_replay_check: true
+
+# Search
+post_filter_enabled: true
+post_filter_discard_rate: 0.3
+unsupported_param_behavior: reject
+bulk_since_supported: false
+include_iterate_supported: false
+revinclude_supported: false
+
+# Resource shape
+populate_meta_last_updated: false
+fhir_id_format: opaque_b64
+careteam_excludes_inpatient: true
+observation_hidden_in_dr_result: true
+
+# References
+binary_403_rate: 0.05
+pagination_cursor_opaque: true
+
+# Bulk
+bulk_request_window_hours: 24
+bulk_group_cooldown_hours: 24
+
+# Write-back
+appointment_create_supported: false
+encounter_create_supported: false

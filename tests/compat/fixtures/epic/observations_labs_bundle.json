@@ -1,0 +1,103 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://fhir.epic.example.com/api/FHIR/R4/Observation?patient=epic-patient-001&code=718-7,2951-2"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://fhir.epic.example.com/api/FHIR/R4/Observation/epic-obs-hgb-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "epic-obs-hgb-001",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:1.2.840.114350.1.13.999.234",
+              "code": "EPIC#HGB",
+              "display": "Hemoglobin"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "718-7",
+              "display": "Hemoglobin [Mass/volume] in Blood"
+            }
+          ],
+          "text": "HGB"
+        },
+        "subject": {
+          "reference": "Patient/epic-patient-001",
+          "display": "Jordan Example"
+        },
+        "effectiveDateTime": "2026-04-17T05:12:00Z",
+        "valueQuantity": {
+          "value": 9.8,
+          "unit": "g/dL",
+          "system": "http://unitsofmeasure.org",
+          "code": "g/dL"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://fhir.epic.example.com/api/FHIR/R4/Observation/epic-obs-na-001",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "epic-obs-na-001",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "laboratory",
+                "display": "Laboratory"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:1.2.840.114350.1.13.999.234",
+              "code": "EPIC#NA",
+              "display": "Sodium"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "2951-2",
+              "display": "Sodium [Moles/volume] in Serum or Plasma"
+            }
+          ],
+          "text": "Sodium"
+        },
+        "subject": {
+          "reference": "Patient/epic-patient-001",
+          "display": "Jordan Example"
+        },
+        "effectiveDateTime": "2026-04-17T05:12:00Z",
+        "valueQuantity": {
+          "value": 134,
+          "unit": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "code": "mmol/L"
+        }
+      }
+    }
+  ]
+}

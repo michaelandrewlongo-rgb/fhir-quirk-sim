@@ -1,0 +1,10 @@
+{
+  "resourceType": "OperationOutcome",
+  "issue": [
+    {
+      "severity": "error",
+      "code": "forbidden",
+      "diagnostics": "Access denied for Binary read. Verify DocumentReference/Binary scope approval."
+    }
+  ]
+}

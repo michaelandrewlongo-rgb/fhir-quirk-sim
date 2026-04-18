@@ -1,0 +1,35 @@
+# Disables all Epic quirks. Simulator behaves as a vanilla FHIR R4 server.
+# Use for parity testing and to isolate whether a failure is an Epic quirk or
+# a genuine product bug.
+auth_required: false
+
+# Auth / SMART
+backend_services_jwt_required: false
+jwt_jti_replay_check: false
+
+# Search
+post_filter_enabled: false
+post_filter_discard_rate: 0.0
+unsupported_param_behavior: ignore
+bulk_since_supported: true
+include_iterate_supported: true
+revinclude_supported: true
+
+# Resource shape
+populate_meta_last_updated: true
+fhir_id_format: uuid
+careteam_excludes_inpatient: false
+observation_hidden_in_dr_result: false
+observation_include_has_member: true
+
+# References
+binary_403_rate: 0.0
+pagination_cursor_opaque: false
+
+# Bulk
+bulk_request_window_hours: 0
+bulk_group_cooldown_hours: 0
+
+# Write-back
+appointment_create_supported: true
+encounter_create_supported: true

@@ -1,0 +1,62 @@
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 1,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://fhir.epic.example.com/api/FHIR/R4/DocumentReference?patient=epic-patient-001&category=clinical-note"
+    }
+  ],
+  "entry": [
+    {
+      "fullUrl": "https://fhir.epic.example.com/api/FHIR/R4/DocumentReference/epic-docref-001",
+      "resource": {
+        "resourceType": "DocumentReference",
+        "id": "epic-docref-001",
+        "status": "current",
+        "docStatus": "final",
+        "type": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11506-3",
+              "display": "Progress note"
+            }
+          ],
+          "text": "Progress Notes"
+        },
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                "code": "clinical-note",
+                "display": "Clinical Note"
+              }
+            ]
+          }
+        ],
+        "subject": {
+          "reference": "Patient/epic-patient-001",
+          "display": "Jordan Example"
+        },
+        "date": "2026-04-17T06:10:00Z",
+        "author": [
+          {
+            "display": "Dr. Casey Attending"
+          }
+        ],
+        "content": [
+          {
+            "attachment": {
+              "contentType": "text/html",
+              "url": "Binary/epic-note-001",
+              "title": "Progress Note"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
